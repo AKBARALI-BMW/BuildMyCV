@@ -8,7 +8,7 @@ const Features = () => {
   return (
    <>
             <div className="flex justify-center mt-4">
-            <div className="flex items-center gap-2 text-sm text-green-800 bg-green-400/10 rounded-full px-6 py-1.5">
+            <div  className="flex items-center gap-2 text-sm text-green-800 bg-green-400/10 rounded-full px-6 py-1.5">
                 <Zap width={14} />
                 <span>Simple process</span>
             </div>
@@ -19,7 +19,6 @@ const Features = () => {
            
               <div className="flex justify-center ">
               <div className="flex flex-col md:flex-row items-center justify xl:-mt-18">
-                
                 <img className="max-w-2xl w-full xl:-ml-32" src="https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/features/group-image-1.png" alt="" />
                 <div className="px-4 md:px-0" onMouseEnter={() => setIsHover(true)} onMouseLeave={() => setIsHover(false)}>
                     <div className={"flex items-center justify-center gap-6 max-w-md group cursor-pointer"}>
