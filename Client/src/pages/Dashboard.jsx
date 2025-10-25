@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Plus, Upload, Edit2,Trash2,FilePenLineIcon, X, UploadCloudIcon,} from"lucide-react";
+import { Plus, Upload, Edit2, Trash2, FilePenLineIcon, X, UploadCloudIcon } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { dummyResumeData } from "../assets/assets"; 
 
 const Dashboard = () => {
   const colors = ["#b794f6", "#fbbf24", "#f87171", "#34d399"];
@@ -15,15 +16,19 @@ const Dashboard = () => {
   const [selectedResumeId, setSelectedResumeId] = useState(null);
   const navigate = useNavigate();
 
-  // Dummy data
-  const dummyResumeData = [
-    { id: 1, name: "Alex's Resume", updatedAt: "9/23/2025" },
-    { id: 2, name: "Jordan's Resume", updatedAt: "9/25/2025" },
-    { id: 3, name: "Riley's Resume", updatedAt: "9/25/2025" },
-  ];
-
+  // Load resumes from dummy data
   const loadAllResumes = async () => {
-    setAllResumes(dummyResumeData);
+    // Transform dummyResumeData to match your display format
+    const transformedData = dummyResumeData.map((resume) => ({
+      id: resume._id,
+      name: resume.title,
+      updatedAt: new Date(resume.updatedAt).toLocaleDateString('en-US', {
+        month: 'numeric',
+        day: 'numeric',
+        year: 'numeric'
+      })
+    }));
+    setAllResumes(transformedData);
   };
 
   useEffect(() => {
@@ -104,8 +109,11 @@ const Dashboard = () => {
 
   // ====== Resume Card Click ======
   const handleResumeClick = (resume) => {
-    const randomId = Math.random().toString(36).substring(2, 10);
-    navigate(`/app/builder/${randomId}`);
+    // Use the original _id from dummyResumeData to match
+    const originalResume = dummyResumeData.find(r => r._id === resume.id);
+    if (originalResume) {
+      navigate(`/app/builder/${originalResume._id}`);
+    }
   };
 
   return (
