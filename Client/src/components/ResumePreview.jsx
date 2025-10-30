@@ -25,7 +25,7 @@ const ResumePreview = ({ data, template = 'minimal-image', accentColor = '#3b82f
 
   return (
     <div className='w-full h-full' id="resume-preview">
-      <div className='bg-gray-100 p-4 rounded-lg shadow-sm h-[calc(100vh-100px)] overflow-y-auto'>
+      <div className='bg-gray-100 p-4 rounded-lg shadow-sm  overflow-y-auto'>
         <div className={"bg-white border border-gray-200 shadow-lg print:shadow-none print:border-none " + classes}>
           {renderTemplate()}
         </div>

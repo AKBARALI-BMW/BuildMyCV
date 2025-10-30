@@ -39,7 +39,7 @@ const TemplateSelector = ({ selectedTemplate, onChange }) => {
       {/* Template Button Trigger */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50 text-blue-600 rounded-lg hover:bg-blue-100 transition-colors font-medium"
+        className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50 text-green-600 rounded-lg hover:bg-blue-100 transition-colors font-medium"
       >
         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <rect x="3" y="3" width="7" height="7" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>

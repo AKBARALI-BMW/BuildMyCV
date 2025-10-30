@@ -54,8 +54,8 @@ const ClassicTemplate = ({ data, accentColor }) => {
 
             {/* Professional Summary */}
             {data.professional_summary && (
-                <section className="mb-6">
-                    <h2 className="text-xl font-semibold mb-3" style={{ color: accentColor }}>
+                <section className="mb-6 text-justify">
+                    <h2 className="text-xl font-semibold mb-3 " style={{ color: accentColor }}>
                         PROFESSIONAL SUMMARY
                     </h2>
                     <p className="text-gray-700 leading-relaxed">{data.professional_summary}</p>
@@ -64,7 +64,7 @@ const ClassicTemplate = ({ data, accentColor }) => {
 
             {/* Experience */}
             {data.experience && data.experience.length > 0 && (
-                <section className="mb-6">
+                <section className="mb-6 text-justify">
                     <h2 className="text-xl font-semibold mb-4" style={{ color: accentColor }}>
                         PROFESSIONAL EXPERIENCE
                     </h2>
@@ -94,7 +94,7 @@ const ClassicTemplate = ({ data, accentColor }) => {
 
             {/* Projects */}
             {data.project && data.project.length > 0 && (
-                <section className="mb-6">
+                <section className="mb-6 text-justify">
                     <h2 className="text-xl font-semibold mb-4" style={{ color: accentColor }}>
                         PROJECTS
                     </h2>
@@ -114,7 +114,7 @@ const ClassicTemplate = ({ data, accentColor }) => {
 
             {/* Education */}
             {data.education && data.education.length > 0 && (
-                <section className="mb-6">
+                <section className="mb-6 text-justify">
                     <h2 className="text-xl font-semibold mb-4" style={{ color: accentColor }}>
                         EDUCATION
                     </h2>
@@ -140,7 +140,7 @@ const ClassicTemplate = ({ data, accentColor }) => {
 
             {/* Skills */}
             {data.skills && data.skills.length > 0 && (
-                <section className="mb-6">
+                <section className="mb-6 text-justify">
                     <h2 className="text-xl font-semibold mb-4" style={{ color: accentColor }}>
                         CORE SKILLS
                     </h2>
