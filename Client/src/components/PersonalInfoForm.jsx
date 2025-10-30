@@ -187,7 +187,7 @@ const PersonalInfoForm = ({ initialData, onChange }) => {
             value={formData.phone}
             onChange={handleInputChange}
             className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
-            placeholder="+92"
+            placeholder="+923568790805"
           />
         </div>
 

@@ -14,7 +14,7 @@ import ProgressBar from '../components/ProgressBar'
 import { dummyResumeData } from '../assets/assets'
 
 const ResumeBuilder = () => {
-  const { id } = useParams()
+  const { resumeId } = useParams()  // Changed from 'id' to 'resumeId' to match route
   const [currentStep, setCurrentStep] = useState('personal')
   const [showPreview, setShowPreview] = useState(false)
   
@@ -42,13 +42,13 @@ const ResumeBuilder = () => {
   const tempSkillsData = useRef(null)
   const tempProjectsData = useRef(null)
 
-  // Generate shareable URL
-  const shareUrl = `${window.location.origin}/resume/${id || 'new'}`
+  // FIXED: Generate shareable URL with correct path
+  const shareUrl = `${window.location.origin}/app/view/${resumeId || 'new'}`
 
   // Load resume data when component mounts
   useEffect(() => {
-    if (id) {
-      const selectedResume = dummyResumeData.find(resume => resume._id === id)
+    if (resumeId) {
+      const selectedResume = dummyResumeData.find(resume => resume._id === resumeId)
       
       if (selectedResume) {
         setResumeData({
@@ -63,7 +63,7 @@ const ResumeBuilder = () => {
         })
       }
     }
-  }, [id])
+  }, [resumeId])
 
   // Handle Download - Triggers print dialog for PDF download
   const handleDownload = () => {
@@ -92,7 +92,7 @@ const ResumeBuilder = () => {
       await navigator.clipboard.writeText(shareUrl)
       setCopied(true)
       setTimeout(() => setCopied(false), 2000)
-    } catch (err) {
+    } catch (_err) {
       alert('Failed to copy URL')
     }
   }
