@@ -1,0 +1,25 @@
+import mongoose from "mongoose";
+
+const connectDB =  async () => {
+    
+    try{
+        mongoose.connection.on("connected", ()=>{ console.log("MongoDB connected successfully"); });
+    
+        let mongodbURL = process.env.MONGODB_URL;
+        const projectname = "resumebuilder";
+
+        if(!mongodbURL){
+            throw new Error("MongoDB URL is not defined in environment variables");
+        }
+        if(mongodbURL.endsWith("/")){
+            mongodbURL = mongodbURL.slice(0, -1);
+        }
+           await mongoose.connect(`${mongodbURL}/${projectname}`)
+
+    }catch(err){
+        console.log("Error while connecting to MongoDB", err);
+    }
+
+}
+
+export default connectDB;   
