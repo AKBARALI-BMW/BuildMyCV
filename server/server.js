@@ -1,24 +1,29 @@
 import express from 'express';
 import cors from 'cors';
 import connectDB from './config/db.js';
-import userRouter from './routes/userRoutes.js'; // CHANGED: .jsx to .js
-import 'dotenv/config.js';
+import userRouter from './routes/userRoutes.js';
+import 'dotenv/config';
 import resumeRouter from './routes/resumeRoutes.js';
 import aiRouter from './routes/aiRoutes.js';
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-//   monogodb connection 
+// MongoDB connection 
 await connectDB();
 
-app.use(express.json());
-app.use(cors());
+// IMPORTANT: Order matters - cors BEFORE routes
+app.use(cors({
+  origin: 'http://localhost:5173', // Your frontend URL
+  credentials: true
+}));
 
-app.get('/', (req, res)=> res.send("serve is running"));
+app.use(express.json());
+
+app.get('/', (req, res) => res.send("Server is running"));
 app.use('/api/users', userRouter);
-app.use('/api/resumes', resumeRouter) 
-app.use('/api/ai', aiRouter)
+app.use('/api/resumes', resumeRouter);
+app.use('/api/ai', aiRouter);
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);

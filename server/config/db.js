@@ -5,11 +5,11 @@ const connectDB =  async () => {
     try{
         mongoose.connection.on("connected", ()=>{ console.log("MongoDB connected successfully"); });
     
-        let mongodbURL = process.env.MONGODB_URL;
-        const projectname = "resumebuilder";
+        let mongodbURL = process.env.MONGODB_URL?.trim();
+        const projectname = process.env.MONGODB_DB?.trim() || "resumebuilder";
 
         if(!mongodbURL){
-            throw new Error("MongoDB URL is not defined in environment variables");
+            throw new Error("MONGODB_URL is not defined in environment variables");
         }
         if(mongodbURL.endsWith("/")){
             mongodbURL = mongodbURL.slice(0, -1);
@@ -17,7 +17,8 @@ const connectDB =  async () => {
            await mongoose.connect(`${mongodbURL}/${projectname}`)
 
     }catch(err){
-        console.log("Error while connecting to MongoDB", err);
+        console.error("Error while connecting to MongoDB", err.message || err);
+        process.exit(1);
     }
 
 }

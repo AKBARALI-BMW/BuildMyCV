@@ -97,7 +97,26 @@ const ResumeBuilder = () => {
     }
   }
 
-  // Handle Personal Info Save button click
+  // Save resume data to backend
+  const saveResumeData = async () => {
+    if (!resumeId) return;
+    
+    try {
+      const token = localStorage.getItem('token');
+      const resumeDataString = JSON.stringify(resumeData);
+      
+      await api.put('/api/resumes/update', {
+        resumeId,
+        resumeData: resumeDataString
+      }, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      
+      console.log('Resume saved successfully!');
+    } catch (error) {
+      console.error('Save error:', error);
+    }
+  }
   const handlePersonalInfoChange = (data) => {
     tempPersonalData.current = data
     
@@ -118,6 +137,11 @@ const ResumeBuilder = () => {
     
     // Show preview
     setShowPreview(true)
+    
+    // Save to backend
+    if (resumeId) {
+      saveResumeData()
+    }
   }
 
   // Handle Professional Summary Save
@@ -130,6 +154,11 @@ const ResumeBuilder = () => {
     }))
     
     setShowPreview(true)
+    
+    // Save to backend
+    if (resumeId) {
+      saveResumeData()
+    }
   }
 
   const handleExperienceChange = (experienceData) => {
@@ -141,6 +170,11 @@ const ResumeBuilder = () => {
     }))
     
     setShowPreview(true)
+    
+    // Save to backend
+    if (resumeId) {
+      saveResumeData()
+    }
   }
 
   const handleEducationChange = (educationData) => {
@@ -152,6 +186,11 @@ const ResumeBuilder = () => {
     }))
     
     setShowPreview(true)
+    
+    // Save to backend
+    if (resumeId) {
+      saveResumeData()
+    }
   }
 
   const handleSkillsChange = (skillsData) => {
@@ -163,6 +202,11 @@ const ResumeBuilder = () => {
     }))
     
     setShowPreview(true)
+    
+    // Save to backend
+    if (resumeId) {
+      saveResumeData()
+    }
   }
 
   const handleProjectsChange = (projectsData) => {
@@ -174,6 +218,11 @@ const ResumeBuilder = () => {
     }))
     
     setShowPreview(true)
+    
+    // Save to backend
+    if (resumeId) {
+      saveResumeData()
+    }
   }
 
   // Template & Color Handlers
@@ -182,6 +231,11 @@ const ResumeBuilder = () => {
       ...prev,
       template: templateId
     }))
+    
+    // Save to backend
+    if (resumeId) {
+      saveResumeData()
+    }
   }
 
   const handleColorChange = (color) => {
@@ -189,6 +243,11 @@ const ResumeBuilder = () => {
       ...prev,
       accent_color: color
     }))
+    
+    // Save to backend
+    if (resumeId) {
+      saveResumeData()
+    }
   }
 
   // Navigation - Previous button
