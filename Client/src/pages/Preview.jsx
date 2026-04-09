@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { ArrowLeft, AlertCircle } from 'lucide-react'
-import ResumePreview from '../components/Resumepreview'
+
 import { dummyResumeData } from '../assets/assets'
 import Loader from '../components/Loader'
+import ResumePreview from "../components/ResumePreview"; 
+
 
 const Preview = () => {
   const { resumeId } = useParams()
