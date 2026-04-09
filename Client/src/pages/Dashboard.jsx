@@ -158,8 +158,8 @@ const Dashboard = () => {
       try {
         // Read PDF file content
         const reader = new FileReader();
-        reader.onload = async (e) => {
-          const pdfContent = e.target.result;
+        reader.onload = async () => {
+          // const pdfContent = e.target.result;
           
           // For now, we'll send a placeholder text
           // In production, you'd use a PDF parser library

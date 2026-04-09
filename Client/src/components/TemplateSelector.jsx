@@ -32,8 +32,6 @@ const TemplateSelector = ({ selectedTemplate, onChange }) => {
     setIsOpen(false)
   }
 
-  const currentTemplate = templates.find(t => t.id === selectedTemplate)
-
   return (
     <div className="w-full">
       {/* Template Button Trigger */}

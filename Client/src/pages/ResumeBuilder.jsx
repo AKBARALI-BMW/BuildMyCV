@@ -8,6 +8,7 @@ import EducationForm from '../components/EducationForm'
 import SkillsForm from '../components/SkillsForm'
 import ProjectsForm from '../components/ProjectsForm'
 import ResumePreview from '../components/Resumepreview'
+import api from '../configs/api'
 import TemplateSelector from '../components/TemplateSelector'
 import ColorPicker from '../components/ColorPicker'
 import ProgressBar from '../components/ProgressBar'
@@ -92,7 +93,7 @@ const ResumeBuilder = () => {
       await navigator.clipboard.writeText(shareUrl)
       setCopied(true)
       setTimeout(() => setCopied(false), 2000)
-    } catch (_err) {
+    } catch {
       alert('Failed to copy URL')
     }
   }

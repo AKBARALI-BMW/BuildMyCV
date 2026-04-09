@@ -22,8 +22,6 @@ const ColorPicker = ({ selectedColor, onChange }) => {
     setIsOpen(false)
   }
 
-  const currentColor = colors.find(c => c.value === selectedColor) || colors[6]
-
   return (
     <div className="w-190  ">
       {/* Accent Button Trigger */}
