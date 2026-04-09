@@ -14,9 +14,12 @@ await connectDB();
 
 // IMPORTANT: Order matters - cors BEFORE routes
 app.use(cors({
-  origin: 'https://build-my-cv-a27u.vercel.app', // Your frontend URL
-  credentials: true
+  origin: 'https://build-my-cv-a27u.vercel.app',
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
 }));
+app.options('*', cors());
 
 app.use(express.json());
 
