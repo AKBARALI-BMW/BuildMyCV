@@ -14,7 +14,7 @@ await connectDB();
 
 // IMPORTANT: Order matters - cors BEFORE routes
 app.use(cors({
-  origin: 'https://build-my-cv-a27u.vercel.app/',
+  origin: (origin, callback) => callback(null, true), // Allow all, but reflects origin
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
