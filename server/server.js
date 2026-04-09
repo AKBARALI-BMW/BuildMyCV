@@ -14,7 +14,7 @@ await connectDB();
 
 // IMPORTANT: Order matters - cors BEFORE routes
 app.use(cors({
-  origin: 'http://localhost:5173', // Your frontend URL
+  origin: 'https://build-my-cv-a27u.vercel.app', // Your frontend URL
   credentials: true
 }));
 
